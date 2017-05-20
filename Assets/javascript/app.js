@@ -5,11 +5,11 @@ function renderButtons(){
 	$("#animal-buttons").empty();
 
 	for (var i = 0; i < topics.length; i++){
-		var button = $("<button>");
-		button.html(topics[i]);
-		button.addClass("gif-button");
-		button.attr("data-name", topics[i]);
-		$("#animal-buttons").append(button);
+		var a = $("<button class='btn bnt-default'>");
+		a.html(topics[i]);
+		a.addClass("gif-button");
+		a.attr("data-name", topics[i]);
+		$("#animal-buttons").append(a);
 	}
 }
 
@@ -28,18 +28,49 @@ function displayGifs(){
 		for (var i = 0; i < results.length; i++){
 			var gifDiv = $("<div>");
 			var gif = $("<img>");
-			//you'll need fixed_height_still.url later
-			gif.attr("src", results[i].images.original.url);
+		
+			gif.attr("src", results[i].images.fixed_height_still.url);
+			gif.attr("data-still", results[i].images.fixed_height_still.url);
+			gif.attr("data-animate", results[i].images.fixed_height.url);
+			gif.attr("data-state", "still");
+			gif.addClass("gif");
 
-			gifDiv.append(gif);
+			gifDiv.prepend(gif);
 			$("#gif-images").prepend(gifDiv);
 		}
-		
 	});
 }
-$(document).on("click", ".gif-button", displayGifs);
+
+$("#add-animal").click(function(event){
+	event.preventDefault();
+	var search = $("#animal-input").val().trim();
+	topics.push(search);
+	renderButtons();
+	$("#animal-input").val("");
+});
+
+function animateGifs(){
+		$(".gif").click(function(){
+			var state = $(this).attr("data-state");
+
+			if(state === "still"){
+				$(this).attr("src", $(this).attr("data-animate"));
+				$(this).attr("data-state", "animate");
+			} else {
+				$(this).attr("src", $(this).attr("data-still"));
+				$(this).attr("data-state", "still");
+			}
+		});
+	}
+
+
+
+
+
 // $(".gif-button").click(function(){
 // 	displayGifs();
 // })
-
 renderButtons();
+
+$(document).on("click", ".gif-button", displayGifs);
+$(document).on("click", "img", animateGifs);
