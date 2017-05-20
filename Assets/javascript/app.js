@@ -50,26 +50,17 @@ $("#add-animal").click(function(event){
 });
 
 function animateGifs(){
-		$(".gif").click(function(){
-			var state = $(this).attr("data-state");
+	var state = $(this).attr("data-state");
 
-			if(state === "still"){
-				$(this).attr("src", $(this).attr("data-animate"));
-				$(this).attr("data-state", "animate");
-			} else {
-				$(this).attr("src", $(this).attr("data-still"));
-				$(this).attr("data-state", "still");
-			}
-		});
+	if(state === "still"){
+		$(this).attr("src", $(this).attr("data-animate"));
+		$(this).attr("data-state", "animate");
+	} else {
+		$(this).attr("src", $(this).attr("data-still"));
+		$(this).attr("data-state", "still");
 	}
-
-
-
-
-
-// $(".gif-button").click(function(){
-// 	displayGifs();
-// })
+}
+	
 renderButtons();
 
 $(document).on("click", ".gif-button", displayGifs);

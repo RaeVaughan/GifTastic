@@ -1,0 +1,58 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-image: url("../halftone.png");
+	font-family: 'Roboto', sans-serif;
+}
+
+
+/***** row of buttons *****/
+
+#animal-buttons {
+	margin-top: 25px;
+}
+
+.btn {
+	margin-right: 5px;
+	margin-top: 5px;
+	background-color: #5e6b90;
+	color: #eafff1;
+	font-size: 16px;
+}
+
+
+
+/***** form and submit button *****/
+
+#animal-form {
+	margin-top: 20px;
+}
+
+label {
+	font-size: 18px;
+	font-weight: bold;
+	color: #464646;
+	margin-bottom: 15px;
+}
+
+#add-animal {
+	border-radius: 5px;
+	background-color: #5e6b90;
+	color: #eafff1;
+	font-size: 16px;
+	padding: 10px;
+	color: #eafff1;
+}
+
+#add-animal:hover {
+	-webkit-transform: scale(1.3);
+  -ms-transform: scale(1.3);
+  transform: scale(1.3);
+}
+
+p {
+	color: #464646;
+	font-size: 16px;
+}
