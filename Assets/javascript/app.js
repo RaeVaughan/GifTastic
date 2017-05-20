@@ -19,7 +19,9 @@ function renderButtons(){
 //function to display gifs
 function displayGifs(){
 	var animal = $(this).attr("data-name");
-	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=dc6zaTOxFJmzC&limit=10";
+	//sets variable to be random number so that query url can pick a random page, enabling different gifs to appear
+	var number = Math.floor(Math.random()*101);
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=dc6zaTOxFJmzC&limit=10&offset=" + number; 
 
 	$.ajax({
 		url: queryURL,
