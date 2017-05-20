@@ -5,7 +5,7 @@ function renderButtons(){
 	$("#animal-buttons").empty();
 
 	for (var i = 0; i < topics.length; i++){
-		var a = $("<button class='btn bnt-default'>");
+		var a = $("<button class='btn btn-default'>");
 		a.html(topics[i]);
 		a.addClass("gif-button");
 		a.attr("data-name", topics[i]);
@@ -15,7 +15,7 @@ function renderButtons(){
 
 function displayGifs(){
 	var animal = $(this).attr("data-name");
-	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=dc6zaTOxFJmzC&limit=10";
+	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + animal + "&api_key=dc6zaTOxFJmzC&limit=10";
 
 	$.ajax({
 		url: queryURL,
